@@ -16,12 +16,16 @@ const router = useRouter();
 const navActiveIndex = ref(0);
 
 const navList = [
-  { name: "No.1 入门", svg: dashboardSvg, href: "#" },
+  { name: "No.1 入门", svg: dashboardSvg, href: "/No.1" },
   { name: "No.2", svg: jobsSvg, href: "#" },
   { name: "No.3", svg: applicationSvg, href: "#" },
   { name: "No.4", svg: teamSvg, href: "#" },
   { name: "No.5", svg: reportSvg, href: "#" },
 ];
+
+const goHome = () => {
+  router.push('/');
+}
 
 const jump = (el, href, i) => {
   el.stopPropagation();
@@ -34,7 +38,7 @@ inst.render = () => (
   <>
     <div class="app-container">
       <div class="app-left">
-        <div class="app-logo">
+        <div class="app-logo" onClick={() => goHome()}>
           {logoSvg}
           <span>D3.js</span>
         </div>
@@ -51,7 +55,9 @@ inst.render = () => (
           ))}
         </ul>
       </div>
-      <div class="app-main"></div>
+      <div class="app-main">
+        <RouterView></RouterView>
+      </div>
     </div>
   </>
 );
